@@ -10,4 +10,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'ioc-angular-CalculatorXC-Luka';
+
+  constructor(){
+    console.log("Calculadora inicialitzada correctament!")
+  }
 }
+
