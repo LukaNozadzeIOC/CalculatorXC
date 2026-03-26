@@ -1,2 +1,27 @@
-<input #inputText type="text" placeholder="Buscar..." />
-<button (click)="onSearch(inputText.value)">Buscar</button>
+<form #searchForm="ngForm" (ngSubmit)="onSearch()" class="search-form">
+
+  <input
+    type="text"
+    name="search"
+    [(ngModel)]="search"
+    required
+    minlength="3"
+    #searchInput="ngModel"
+    placeholder="Buscar..."
+  />
+
+  <div *ngIf="searchInput.invalid && searchInput.touched">
+    <small *ngIf="searchInput.errors?.['required']">
+      El campo es obligatorio
+    </small>
+
+    <small *ngIf="searchInput.errors?.['minlength']">
+      Mínimo 3 caracteres
+    </small>
+  </div>
+
+  <button type="submit" [disabled]="searchForm.invalid">
+    Buscar
+  </button>
+
+</form>
