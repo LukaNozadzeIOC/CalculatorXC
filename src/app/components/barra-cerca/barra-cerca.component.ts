@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-barra-cerca',
-  standalone: true,
-  imports: [],
   templateUrl: './barra-cerca.component.html',
-  styleUrl: './barra-cerca.component.scss'
+  standalone: true,
 })
 export class BarraCercaComponent {
+  @Output() search = new EventEmitter<string>();
 
+  onSearch(value: string) {
+    this.search.emit(value);
+  }
 }

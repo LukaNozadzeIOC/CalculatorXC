@@ -2,6 +2,12 @@
   <h1>Benvinguts a aquesta calculadora! </h1>
   <p>Jo soc Luka Nozadze i he fet aplicació per fer els calculs
      que volgeu segons les vostes necessitats</p>
+     
+     <app-barra-cerca (search)="onSearch($event)"></app-barra-cerca>
+
+<app-llista-elements
+  [elements]="filteredElements">
+</app-llista-elements>
 </main>
 <app-list></app-list>
 <router-outlet></router-outlet>

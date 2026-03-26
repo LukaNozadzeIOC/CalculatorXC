@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Element } from '../../models/element.model';
 
 @Component({
   selector: 'app-llista-elements',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './llista-elements.component.scss'
 })
 export class LlistaElementsComponent {
-
+  @Input() elements: Element[] = []; 
 }

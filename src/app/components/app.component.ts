@@ -1,18 +1,26 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ELEMENTS_MOCK } from '../mocks/element.mock';
 import { ListComponent } from '../mocks/mock.component';
+import { Element } from '../models/element.model';
+import { RouterOutlet } from '@angular/router';
+import { BarraCercaComponent } from './barra-cerca/barra-cerca.component';
+import { LlistaElementsComponent } from './llista-elements/llista-elements.component';
+import { TargetaElementComponent } from './targeta-element/targeta-element.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, ListComponent], 
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports:  [ListComponent, RouterOutlet, BarraCercaComponent, LlistaElementsComponent],
+  standalone: true
 })
 export class AppComponent {
-  title = 'ioc-angular-CalculatorXC-Luka';
+  elements: Element[] = ELEMENTS_MOCK;
+  filteredElements: Element[] = ELEMENTS_MOCK;
+  title: any;
 
-  constructor(){
-    console.log("Calculadora inicialitzada correctament!")
+  onSearch(term: string) {
+    this.filteredElements = this.elements.filter(el =>
+      el.name.toLowerCase().includes(term.toLowerCase())
+    );
   }
 }
